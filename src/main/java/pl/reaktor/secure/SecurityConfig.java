@@ -14,18 +14,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource datasource;
 	
-	@Override
+/*	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 		.jdbcAuthentication()
 			.dataSource(datasource);
 	}
-	
+	*/
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests() 
-        .antMatchers("/").permitAll() 
+		.antMatchers("/").permitAll() 
+		.antMatchers("/start").permitAll() 
+        .antMatchers("/registration").permitAll() 
         .anyRequest().authenticated() 
        .and() 
        .formLogin(); 
